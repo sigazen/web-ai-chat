@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "homework.html",  // 替换成你的 HTML 文件名
+      "src": "homework.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/homework.html"  // 替换成你的 HTML 文件名
+      "dest": "/homework.html"
     }
   ]
 }

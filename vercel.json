@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/*.{html,css,js}",
+      "src": "*.{html,css,js}", // 匹配所有HTML, CSS 和 JS 文件
       "use": "@vercel/static"
     }
   ]

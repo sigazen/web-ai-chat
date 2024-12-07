@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "homework.html",
+      "src": "*.{html,css,js}",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/homework.html"
+      "dest": "/index.html"
     }
   ]
 }

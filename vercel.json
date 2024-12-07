@@ -2,22 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/ai.html",
+      "src": "src/*.{html,css,js}",
       "use": "@vercel/static"
-    },
-    {
-      "src": "src/ai.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "src/ai.js",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/ai.html"
     }
   ]
 }

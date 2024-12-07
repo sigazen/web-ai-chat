@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能对话系统</title>
+    <link rel="stylesheet" href="./ai.css">
+</head>
+<body>
+    <div id="connection-form">
+        <input type="text" id="base-url" placeholder="输入Base URL (例如: http://localhost:8080)">
+        <input type="text" id="api-key" placeholder="输入API Key">
+        <button onclick="connect()">连接</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h2>🤖 AI智能对话系统</h2>
+            <div class="subtitle" style="color: #7f8c8d; font-size: 0.9em;">由 信息工程2班 施嘉诚、王方圆、吴建成、郑润聪共同开发</div>
+            <div class="host-info" id="hostInfo"></div>
+            <button onclick="showConnectionForm()" class="reconnect-button">重新连接</button>
+
+            <div class="instructions">
+                <h3 style="margin-top: 0; color: #856404;">📝 使用说明</h3>
+                <p>1. 从下方下拉菜单中选择想要使用的AI模型</p>
+                <p>2. 在底部输入框输入您的问题或指令</p>
+                <p>3. 点击发送按钮或按Enter键发送消息</p>
+                <p>4. 使用Shift+Enter可以在输入框中换行</p>
+                <p>5. 系统会保持对话历史，可以进行连续对话</p>
+                <p>6. 等待AI回复时会显示加载动画</p>
+            </div>
+
+            <div class="model-container">
+                <div class="model-section">
+                    <h3>模型 1</h3>
+                    <select id="modelSelect1"></select>
+                    <div class="prompt-container">
+                        <button id="promptButton1" class="prompt-button">选择提示词</button>
+                        <div id="promptList1" class="prompt-list">
+                            <ul id="mainList1"></ul>
+                        </div>
+                        <div id="subList1" class="sub-prompt-list">
+                            <ul></ul>
+                        </div>
+                        <textarea id="promptText1" placeholder="提示词..." rows="3"></textarea>
+                        <button onclick="clearPrompt(1)" class="secondary-button">清除提示词</button>
+                        <div id="alertMessage1" class="alert-message">暂未选择提示词</div>
+                    </div>
+                </div>
+
+                <div class="model-section">
+                    <h3>模型 2</h3>
+                    <select id="modelSelect2"></select>
+                    <div class="prompt-container">
+                        <button id="promptButton2" class="prompt-button">选择提示词</button>
+                        <div id="promptList2" class="prompt-list">
+                            <ul id="mainList2"></ul>
+                        </div>
+                        <div id="subList2" class="sub-prompt-list">
+                            <ul></ul>
+                        </div>
+                        <textarea id="promptText2" placeholder="提示词..." rows="3"></textarea>
+                        <button onclick="clearPrompt(2)" class="secondary-button">清除提示词</button>
+                        <div id="alertMessage2" class="alert-message">暂未选择提示词</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-settings">
+                <div class="settings-header" onclick="toggleAdvancedSettings()">
+                    ⚙️ 高级设置 <span class="toggle-icon">▼</span>
+                </div>
+                <div class="settings-content" id="advancedSettings">
+                    <div class="setting-item">
+                        <label for="temperatureSlider">温度 (Temperature): <span id="temperatureValue">0.7</span></label>
+                        <input
+                            type="range"
+                            id="temperatureSlider"
+                            min="0"
+                            max="2"
+                            step="0.1"
+                            value="0.7"
+                            oninput="updateTemperature(this.value)"
+                        >
+                        <div class="desc">
+                            较低的值使输出更专注和确定，较高的值使输出更随机和创造性
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: right; margin: 10px 0;">
+                <button onclick="resetChat()" class="secondary-button">重置对话</button>
+            </div>
+        </div>
+
+        <div class="chat-split">
+            <div id="chatPanel1" class="chat-panel">
+                <div class="system-message">对话已准备就绪，请开始对话。</div>
+            </div>
+            <div id="chatPanel2" class="chat-panel">
+                <div class="system-message">对话已准备就绪，请开始对话。</div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <textarea
+                id="userInput"
+                placeholder="在此输入您的问题或指令... (按Enter发送，Shift+Enter换行)"
+                rows="1"
+            ></textarea>
+            <button onclick="sendMessage()" id="sendButton">发送</button>
+        </div>
+    </div>
+
+    <div class="signature">
+         由 信息工程2班 施嘉诚、王方圆、吴建成、郑润聪共同开发🚀
+    </div>
+
+    <script src="./ai.js"></script>
+</body>
+</html>
